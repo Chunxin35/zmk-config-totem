@@ -108,7 +108,7 @@
             >;
         };
 
-        layer_4 {
+        Mouse {
             bindings = <
         &trans  &trans  &trans  &trans  &trans    &mkp LCLK       &mkp RCLK       &mmv MOVE_UP    &trans           &trans
         &trans  &trans  &trans  &trans  &trans    &msc SCRL_UP    &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans
