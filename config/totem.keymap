@@ -1,6 +1,6 @@
 #include <behaviors.dtsi>
-#include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
 
 #define BASE 0
@@ -11,25 +11,27 @@
 #define TVP2 5
 
 &mt {
-  quick-tap-ms = <100>;
-  global-quick-tap;
-  flavor = "tap-preferred";
-  tapping-term-ms = <170>;
+    quick-tap-ms = <100>;
+    global-quick-tap;
+    flavor = "tap-preferred";
+    tapping-term-ms = <170>;
 };
 
 / {
-     combos {
-            compatible = "zmk,combos";
-            combo_esc {
-                timeout-ms = <50>;
-                key-positions = <0 1>;
-                bindings = <&kp ESC>;
-            };
-            combo_tvp {
-                timeout-ms = <100>;
-                key-positions = <11 12 13>;
-                bindings = <&tog TVP1>;
-            };
+    combos {
+        compatible = "zmk,combos";
+
+        combo_esc {
+            timeout-ms = <50>;
+            key-positions = <0 1>;
+            bindings = <&kp ESC>;
+        };
+
+        combo_tvp {
+            timeout-ms = <100>;
+            key-positions = <11 12 13>;
+            bindings = <&tog TVP1>;
+        };
     };
 
     macros {
@@ -37,17 +39,22 @@
             label = "giphy";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LSHFT>
-                , <&macro_tap &kp N2>
-                , <&macro_release &kp LSHFT>
-                , <&macro_tap &kp G &kp I &kp F>
-                ;
+            bindings =
+                <&macro_press>,
+                <&kp LSHFT>,
+                <&macro_tap>,
+                <&kp N2>,
+                <&macro_release>,
+                <&kp LSHFT>,
+                <&macro_tap>,
+                <&kp G &kp I &kp F>;
         };
     };
-behaviors {
+
+    behaviors {
         // Home Row Mods: Tap for key, hold for modifier
         // Balanced for Windows shortcuts
+
         hrm: home_row_mods {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -57,44 +64,48 @@ behaviors {
             bindings = <&kp>, <&kp>;
         };
     };
-keymap {
-compatible = "zmk,keymap";
 
-       base_layer {
-              label= "BASE";
-                     bindings = <
-         &kp Q       &kp W       &kp E        &kp R        &kp T           &kp Y       &kp U        &kp I        &kp O       &kp P
-         &hrm LGUI A &hrm LALT S &hrm LCTRL D &hrm LSHFT F &kp G           &kp H       &hrm RSHFT J &hrm RCTRL K &hrm RALT L &hrm RGUI SEMI
-&kp TAB  &kp Z       &kp X       &kp C        &kp V        &kp B           &kp N       &kp M        &kp COMMA    &kp DOT     &kp FSLH       &kp BSLH
-                                 &kp DEL      &lt NAV TAB  &kp SPACE       &kp RET     &lt SYM ESC  &kp BSPC
-                     >;
-       };
-       nav_layer {
-              label= "NAV";
-                     bindings = <
-       &kp N1      &kp N2      &kp N3      &kp N4      &kp N5          &kp N6      &kp N7      &kp N8      &kp N9      &kp N0
-       &kp LGUI    &kp LALT    &kp LCTRL   &kp LSHFT   &trans          &trans      &kp KP_N4   &kp KP_N5   &kp KP_N6   &kp KP_PLUS
-&trans &kp HOME    &kp LEFT    &kp DOWN    &kp RIGHT   &kp END         &trans      &kp KP_N1   &kp KP_N2   &kp KP_N3   &kp KP_MINUS  &trans
-                               &trans      &trans      &trans          &kp KP_N0   &mo ADJ     &kp KP_DOT
-                     >;
-       };
-       sym_layer {
-              label= "SYM";
-                     bindings = <
-       &kp EXCL    &kp AT      &kp HASH    &kp DLLR    &kp PRCNT       &kp CARET   &kp AMPS    &kp ASTRK   &kp LPAR    &kp RPAR
-       &trans      &trans      &trans      &trans      &trans          &kp MINUS   &kp EQUAL   &kp LBKT    &kp RBKT    &kp SQT
-&trans &trans      &trans      &trans      &trans      &trans          &kp UNDER   &kp PLUS    &kp LBRC    &kp RBRC    &kp DQT   &trans
-                               &trans      &mo ADJ     &trans          &trans      &trans      &trans
-                     >;
-       };
-       adjust_layer {
-              label= "ADJ";
-                     bindings = <
-       &kp F1      &kp F2       &kp F3      &kp F4      &kp F5          &kp F6      &kp F7      &kp F8      &kp F9          &kp F10
-       &bootloader &bt BT_NXT   &bt BT_PRV  &bt BT_CLR  &trans          &trans      &kp F11     &kp F12     &kp PSCRN       &kp SLCK
-&trans &sys_reset  &out OUT_TOG &trans      &trans      &trans          &trans      &trans      &trans      &kp PAUSE_BREAK &trans    &trans
-                                &trans      &trans      &trans          &trans      &trans      &trans
-                     >;
-       };
-};
+    keymap {
+        compatible = "zmk,keymap";
+
+        base_layer {
+            label = "BASE";
+            bindings = <
+        &kp Q        &kp W        &kp E         &kp R         &kp T            &kp Y    &kp U         &kp I         &kp O        &kp P
+        &hrm LGUI A  &hrm LALT S  &hrm LCTRL D  &hrm LSHFT F  &kp G            &kp H    &hrm RSHFT J  &hrm RCTRL K  &hrm RALT L  &hrm RGUI SEMI
+&trans  &kp Z        &kp X        &kp C         &kp V         &kp B            &kp N    &kp M         &kp COMMA     &kp DOT      &kp FSLH        &trans
+                                  &lt 1 TAB     &kp SPACE     &kp BACKSPACE    &kp DEL  &kp ENTER     &lt 2 ESC
+            >;
+        };
+
+        nav_layer {
+            label = "NAV";
+            bindings = <
+        &kp N1    &kp N2    &kp N3     &kp N4     &kp N5     &kp N6     &kp N7     &kp N8      &kp N9     &kp N0
+        &kp LGUI  &kp LALT  &kp LCTRL  &kp LSHFT  &trans     &trans     &kp KP_N4  &kp KP_N5   &kp KP_N6  &kp KP_PLUS
+&trans  &kp HOME  &kp LEFT  &kp DOWN   &kp RIGHT  &kp END    &trans     &kp KP_N1  &kp KP_N2   &kp KP_N3  &kp KP_MINUS  &trans
+                            &trans     &trans     &trans     &kp KP_N0  &mo ADJ    &kp KP_DOT
+            >;
+        };
+
+        sym_layer {
+            label = "SYM";
+            bindings = <
+        &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT    &kp CARET  &kp AMPS   &kp ASTRK  &kp LPAR  &kp RPAR
+        &trans    &trans  &trans    &trans    &trans       &kp MINUS  &kp EQUAL  &kp LBKT   &kp RBKT  &kp SQT
+&trans  &trans    &trans  &trans    &trans    &trans       &kp UNDER  &kp PLUS   &kp LBRC   &kp RBRC  &kp DQT   &trans
+                          &trans    &mo ADJ   &trans       &trans     &trans     &trans
+            >;
+        };
+
+        adjust_layer {
+            label = "ADJ";
+            bindings = <
+        &kp F1       &kp F2        &kp F3      &kp F4      &kp F5    &kp F6  &kp F7   &kp F8   &kp F9           &kp F10
+        &bootloader  &bt BT_NXT    &bt BT_PRV  &bt BT_CLR  &trans    &trans  &kp F11  &kp F12  &kp PSCRN        &kp SLCK
+&trans  &sys_reset   &out OUT_TOG  &trans      &trans      &trans    &trans  &trans   &trans   &kp PAUSE_BREAK  &trans    &trans
+                                   &trans      &trans      &trans    &trans  &trans   &trans
+            >;
+        };
+    };
 };
