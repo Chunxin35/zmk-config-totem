@@ -85,7 +85,7 @@
         &kp N1     &kp N2          &kp N3     &kp N4     &kp N5           &kp N6     &kp N7        &kp N8        &kp N9        &kp N0
         &kp LC(Z)  &kp LEFT_ARROW  &kp LC(F)  &kp LC(C)  &kp LC(V)        &kp MINUS  &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp KP_MULTIPLY
 &trans  &kp LC(Y)  &kp HOME        &kp LC(H)  &kp LC(X)  &kp LC(LA(V))    &kp PLUS   &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp KP_DIVIDE    &trans
-                                   &trans     &trans     &trans           &kp EQUAL  &kp N0        &lt 3 PERIOD
+                                   &trans     &trans     &kp DEL          &kp EQUAL  &kp N0        &lt 3 PERIOD
             >;
         };
 
